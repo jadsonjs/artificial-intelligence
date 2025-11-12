@@ -14,7 +14,11 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # 4 Aplica K-Means com 3 clusters (ajuste conforme o caso)
+<<<<<<< Upstream, based on origin/master
 kmeans = KMeans(n_clusters=3, random_state=42)
+=======
+kmeans = KMeans(n_clusters=2, random_state=42)
+>>>>>>> fcc641b kmeans
 dados['Cluster'] = kmeans.fit_predict(X_scaled)
 
 # 5 Mostra o resultado
