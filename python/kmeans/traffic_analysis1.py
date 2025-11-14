@@ -9,22 +9,18 @@ dados = pd.read_csv('trafego.csv')
 # 2 Seleciona as features numéricas mais relevantes
 X = dados[['Packets A → B', 'Packets B → A', 'Bytes A → B', 'Bytes B → A', 'Duration']]
 
-# 3 Normaliza os dados (importante para K-Means)
+# 3 Normaliza os dados
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# 4 Aplica K-Means com 3 clusters (ajuste conforme o caso)
-<<<<<<< Upstream, based on origin/master
+# 4 Aplica K-Means com 3 clusters
 kmeans = KMeans(n_clusters=3, random_state=42)
-=======
-kmeans = KMeans(n_clusters=2, random_state=42)
->>>>>>> fcc641b kmeans
 dados['Cluster'] = kmeans.fit_predict(X_scaled)
 
-# 5 Mostra o resultado
+# 5 Imprime o resultado
 print(dados[['Address A', 'Address B', 'Cluster']].head())
 
-# 6 Visualização 2D
+# 6 Visualização
 plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=dados['Cluster'], cmap='viridis')
 plt.xlabel('Packets A → B')
 plt.ylabel('Packets B → A')
